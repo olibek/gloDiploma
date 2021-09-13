@@ -1,5 +1,5 @@
 {
-  "name": "time",
+  "name": "diploma",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/olibek/clock.git"
+    "url": "https://github.com/olibek/gloDiploma.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/olibek/clock/issues"
+    "url": "https://github.com/olibek/gloDiploma/issues"
   },
-  "homepage": "https://github.com/olibek/clock#readme",
+  "homepage": "https://github.com/olibek/gloDiploma#readme",
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.15.5",
