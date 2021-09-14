@@ -38,7 +38,18 @@ eval("\nmodule.exports = function () {\n\treturn /[\\u001b\\u009b][[()#;?]*(?:[0
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_modal_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal.js */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_slider_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/slider.js */ \"./src/modules/slider.js\");\n\n\n\n\n(0,_modules_modal_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n(0,_modules_slider_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n\n//# sourceURL=webpack://diploma/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_modal_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal.js */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_slider_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/slider.js */ \"./src/modules/slider.js\");\n/* harmony import */ var _modules_carousel_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/carousel.js */ \"./src/modules/carousel.js\");\n\n\n\n\n\n(0,_modules_modal_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n(0,_modules_slider_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n(0,_modules_carousel_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\n\n//# sourceURL=webpack://diploma/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/carousel.js":
+/*!*********************************!*\
+  !*** ./src/modules/carousel.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n\n\nvar carousel = function carousel() {\n  var position = 0;\n  var slidesToShow = 3,\n      slideToScroll = 1,\n      container = document.querySelector('.services-elements'),\n      track = document.querySelector('.services-carousel'),\n      items = document.querySelectorAll('.col-sm-6'),\n      btnPrev = document.querySelector('.arrow-left'),\n      btnNext = document.querySelector('.arrow-right'),\n      itemsCount = items.length,\n      itemWidth = container.clientWidth / slidesToShow,\n      movePosition = slideToScroll * itemWidth;\n  items.forEach(function (item) {\n    item.style.minWidth = \"\".concat(itemWidth, \"px\");\n  });\n\n  var setPosition = function setPosition() {\n    track.style.transform = \"translateX(\".concat(position, \"px)\");\n  };\n\n  btnPrev.addEventListener('click', function () {\n    position += movePosition;\n    setPosition();\n  });\n  btnNext.addEventListener('click', function () {\n    position -= movePosition;\n    setPosition();\n  });\n\n  var checkBtns = function checkBtns() {\n    btnPrev.disabled = position === 0;\n    btnNext.disabled = position <= -(itemsCount - slidesToShow) * itemWidth;\n  };\n\n  checkBtns();\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (carousel);\n\n//# sourceURL=webpack://diploma/./src/modules/carousel.js?");
 
 /***/ }),
 
@@ -49,7 +60,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mod
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n\n\nvar modal = function modal() {\n  var modalOver = document.querySelector('.modal-overlay'),\n      modalCall = document.querySelector('.modal-callback');\n  document.addEventListener('click', function (event) {\n    var target = event.target;\n\n    if (target.closest('.callback-btn,  .button-services')) {\n      modalOver.style.display = 'block';\n      modalCall.style.display = 'block';\n    } else if (target.closest('.modal-close')) {\n      modalOver.style.display = 'none';\n      modalCall.style.display = 'none';\n    } else {\n      target = target.closest('.modal-callback');\n\n      if (!target) {\n        modalOver.style.display = 'none';\n        modalCall.style.display = 'none';\n      }\n    }\n  });\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modal);\n\n//# sourceURL=webpack://diploma/./src/modules/modal.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n\n\nvar modal = function modal() {\n  var modalOver = document.querySelector('.modal-overlay'),\n      modalCall = document.querySelector('.modal-callback'),\n      beforeImg = window.getComputedStyle(document.querySelector('.img-wrapper'), ':before').content;\n  document.addEventListener('click', function (event) {\n    var target = event.target;\n\n    if (target.closest('.callback-btn,  .button-services, .img-call')) {\n      modalOver.style.display = 'block';\n      modalCall.style.display = 'block';\n    } else if (target.closest('.modal-close')) {\n      modalOver.style.display = 'none';\n      modalCall.style.display = 'none';\n    } else {\n      target = target.closest('.modal-callback');\n\n      if (!target) {\n        modalOver.style.display = 'none';\n        modalCall.style.display = 'none';\n      }\n    }\n  });\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modal);\n\n//# sourceURL=webpack://diploma/./src/modules/modal.js?");
 
 /***/ }),
 
@@ -462,7 +473,7 @@ eval("var map = {\n\t\"./log\": \"./node_modules/webpack/hot/log.js\"\n};\n\n\nf
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("f906f28305c5e12e44a2")
+/******/ 		__webpack_require__.h = () => ("34d8598864090c5967ff")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

@@ -1278,3 +1278,11 @@ video#video_background {
 .item-active{
 	display: block;
 }
+.services-carousel{
+	display: flex;
+	gap: 5px;
+	overflow: hidden;
+}
+.col-md-4{
+	min-width: 33%;
+}
