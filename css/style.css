@@ -1249,7 +1249,6 @@ video#video_background {
 	-webkit-box-pack:center;
 	-ms-flex-pack:center;
 	justify-content:center;
-	z-index:10000;
 }
 .portfolio-dots .dot {
 	cursor:pointer;
@@ -1278,4 +1277,10 @@ video#video_background {
 .item-active{
 	display: block;
 }
-
+.up{
+visibility:hidden;
+}
+.show {
+	opacity: 1;
+	visibility: visible;
+}

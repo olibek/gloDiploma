@@ -38,7 +38,7 @@ eval("\nmodule.exports = function () {\n\treturn /[\\u001b\\u009b][[()#;?]*(?:[0
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_modal_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal.js */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_slider_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/slider.js */ \"./src/modules/slider.js\");\n/* harmony import */ var _modules_carousel_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/carousel.js */ \"./src/modules/carousel.js\");\n/* harmony import */ var _modules_tabs_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/tabs.js */ \"./src/modules/tabs.js\");\n\n\n\n\n\n\n(0,_modules_modal_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n(0,_modules_slider_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n(0,_modules_carousel_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\n(0,_modules_tabs_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\n\n//# sourceURL=webpack://diploma/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_modal_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal.js */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_slider_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/slider.js */ \"./src/modules/slider.js\");\n/* harmony import */ var _modules_carousel_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/carousel.js */ \"./src/modules/carousel.js\");\n/* harmony import */ var _modules_tabs_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/tabs.js */ \"./src/modules/tabs.js\");\n/* harmony import */ var _modules_scrollToTop_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/scrollToTop.js */ \"./src/modules/scrollToTop.js\");\n\n\n\n\n\n\n\n(0,_modules_modal_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n(0,_modules_slider_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n(0,_modules_carousel_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\n(0,_modules_tabs_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\n(0,_modules_scrollToTop_js__WEBPACK_IMPORTED_MODULE_4__[\"default\"])();\n\n//# sourceURL=webpack://diploma/./src/index.js?");
 
 /***/ }),
 
@@ -61,6 +61,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n\n\nvar modal = function modal() {\n  var modalOver = document.querySelector('.modal-overlay'),\n      modalCall = document.querySelector('.modal-callback'),\n      beforeImg = window.getComputedStyle(document.querySelector('.img-wrapper'), ':before').content;\n  document.addEventListener('click', function (event) {\n    var target = event.target;\n\n    if (target.closest('.callback-btn,  .button-services, .fancyboxModal')) {\n      modalOver.style.display = 'block';\n      modalCall.style.display = 'block';\n    } else if (target.closest('.modal-close')) {\n      modalOver.style.display = 'none';\n      modalCall.style.display = 'none';\n    } else {\n      target = target.closest('.modal-callback');\n\n      if (!target) {\n        modalOver.style.display = 'none';\n        modalCall.style.display = 'none';\n      }\n    }\n  });\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modal);\n\n//# sourceURL=webpack://diploma/./src/modules/modal.js?");
+
+/***/ }),
+
+/***/ "./src/modules/scrollToTop.js":
+/*!************************************!*\
+  !*** ./src/modules/scrollToTop.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n\n\nfunction scrollToTop(to) {\n  var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 700;\n\n  var element = document.scrollingElement || document.documentElement,\n      start = element.scrollTop,\n      change = to - start,\n      startDate = +new Date(),\n      // t = current time\n  // b = start value\n  // c = change in value\n  // d = duration\n  easeInOutQuad = function easeInOutQuad(t, b, c, d) {\n    t /= d / 2;\n    if (t < 1) return c / 2 * t * t + b;\n    t--;\n    return -c / 2 * (t * (t - 2) - 1) + b;\n  },\n      animateScroll = function animateScroll() {\n    var currentDate = +new Date();\n    var currentTime = currentDate - startDate;\n    element.scrollTop = parseInt(easeInOutQuad(currentTime, start, change, duration));\n\n    if (currentTime < duration) {\n      requestAnimationFrame(animateScroll);\n    } else {\n      element.scrollTop = to;\n    }\n  };\n\n  animateScroll();\n}\n\ndocument.addEventListener('DOMContentLoaded', function () {\n  var btn = document.querySelector('.up');\n  window.addEventListener('scroll', function () {\n    // Если прокрутили дальше 599px, показываем кнопку\n    if (pageYOffset > 600) {\n      btn.classList.add('show'); // Иначе прячем\n    } else {\n      btn.classList.remove('show');\n    }\n  }); // При клике прокручиываем на самый верх\n\n  btn.onclick = function (click) {\n    click.preventDefault();\n    scrollToTop(0, 400);\n  };\n});\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (scrollToTop);\n\n//# sourceURL=webpack://diploma/./src/modules/scrollToTop.js?");
 
 /***/ }),
 
@@ -484,7 +495,7 @@ eval("var map = {\n\t\"./log\": \"./node_modules/webpack/hot/log.js\"\n};\n\n\nf
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("8dd719ccd98d340e6ee6")
+/******/ 		__webpack_require__.h = () => ("516d24be9a5b34adffee")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
